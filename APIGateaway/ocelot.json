@@ -1,0 +1,28 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/reservation/{id}", // Ben bu pathe gelenleri hangi adrese göndereyim 
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44370
+        }
+      ],
+      "UpstreamPathTemplate": "/r/{id}", // Dýþardan bize gelen herhangi bir path
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/contact/{id}", // Ben bu pathe gelenleri hangi adrese göndereyim 
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44390
+        }
+      ],
+      "UpstreamPathTemplate": "/c/{id}", // Dýþardan bize gelen herhangi bir path
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ]
+}
