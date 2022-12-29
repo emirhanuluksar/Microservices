@@ -1,0 +1,56 @@
+version: '3.1'
+
+services:
+	s_api_gateway:
+	container_name: c_api_gateway
+	image: emirhan/apigateway
+	build:
+		context: .
+		dockerfile: APIGateway/Dockerfile
+	ports:
+	 - 80:80
+	networks:
+		- micro_net
+		- int_net
+
+
+  s_contact_api:
+    container_name: c_contact_api
+	image: emirhan/contactapi
+	build:
+		context: .
+		dockerfile: Services/ContactAPI/Contact.API/Dockerfile
+	ports:
+	 - 9000:9000
+	networks:
+	 - int_net
+
+  s_contact_api:
+    container_name: r_reservation_api
+	image: emirhan/reservationapi
+	build:
+		context: .
+		dockerfile: Services/ReservationAPI/Reservation.API/Dockerfile
+	ports:
+	 - 7000:7000
+	networks:
+	 - int_net
+
+
+
+
+
+
+
+
+
+
+
+
+
+networks:
+ int_net:
+	driver: overlay
+	internal: true
+  micro_net:
+	driver: bridge
